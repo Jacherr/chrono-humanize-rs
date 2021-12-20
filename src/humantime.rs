@@ -227,23 +227,6 @@ impl HumanTime {
             periods.push(TimePeriod::Seconds(seconds));
         }
 
-        let (millis, reminder) = reminder.split_milliseconds();
-        if let Some(millis) = millis {
-            periods.push(TimePeriod::Millis(millis));
-        }
-
-        let (micros, reminder) = reminder.split_microseconds();
-        if let Some(micros) = micros {
-            periods.push(TimePeriod::Micros(micros));
-        }
-
-        let (nanos, reminder) = reminder.split_nanoseconds();
-        if let Some(nanos) = nanos {
-            periods.push(TimePeriod::Nanos(nanos));
-        }
-
-        debug_assert!(reminder.is_zero());
-
         if periods.is_empty() {
             periods.push(TimePeriod::Seconds(0));
         }
